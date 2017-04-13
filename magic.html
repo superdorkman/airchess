@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>飞行棋大战</title>
+  <link rel="stylesheet" href="css/magic.css">
+</head>
+<body>
+  
+  <div class="buttons">
+    <!-- <button class="btn-wind" onclick="deleteMagic('风')">龙卷风</button>
+    <button class="btn-rain" onclick="deleteMagic('雨')">暴雨</button>
+    <button class="btn-stop" onclick="deleteMagic('停')">停一回</button>
+    <button class="btn-again" onclick="deleteMagic('再')">再掷一次</button>
+    <button class="doRandom" onclick="randomMagic()">变换道具</button> -->
+
+    <button class="btn-wind" onclick="doWind()">龙卷风</button>
+    <button class="btn-rain">暴雨</button>
+    <button class="btn-stop">停一回</button>
+    <button class="btn-again">再掷一次</button>
+    <button class="doRandom" onclick="randomMagic()">变换道具</button>
+  </div>
+
+
+
+  <div id="app">
+
+    <!-- 主干路 -->
+    <div class="d1">
+      <span class="step step1 blue" data-direction="r4"></span>
+      <span class="step step2 red"></span>
+      <span class="step step3 yellow"></span>
+      <span class="step step4 green"></span>
+    </div>
+    <div class="d2">
+      <span class="step step5 green"></span>
+      <span class="step step6 yellow"></span>
+      <span class="step step7 red"></span>
+      <span class="step step8 blue"></span>
+    </div>
+    <div class="d3">
+      <span class="step step9 blue"></span>
+      <span class="step step10 red"></span>
+      <span class="step step11 yellow"></span>
+      <span class="step step12 green"></span>
+      <span class="step step13 blue"></span>
+    </div>
+    <div class="d4">
+      <span class="step step14 red"></span>
+      <span class="step step15 yellow"></span>
+      <span class="step step16 green"></span>
+      <span class="step step17 blue"></span>
+    </div>
+    <div class="d5">
+      <!-- <span class="semi-circle tr"></span> -->
+      <span class="step step18 red"></span>
+      <span class="step step19 yellow"></span>
+      <span class="step step20 green"></span>
+      <span class="step step21 blue"></span>
+    </div>
+    <div class="d6">
+      <span class="step step22 red"></span>
+      <span class="step step23 yellow"></span>
+      <span class="step step24 green"></span>
+      <span class="step step25 blue"></span>
+      <span class="step step26 red"></span>
+    </div>
+    <div class="d7">
+      <span class="step step27 red"></span>
+      <span class="step step28 blue"></span>
+      <span class="step step29 green"></span>
+      <span class="step step30 yellow"></span>
+    </div>
+    <div class="d8">
+      <span class="step step31 yellow"></span>
+      <span class="step step32 green"></span>
+      <span class="step step33 blue"></span>
+      <span class="step step34 red"></span>
+    </div>
+    <div class="d9">
+      <span class="step step35 yellow"></span>
+      <span class="step step36 red"></span>
+      <span class="step step37 blue"></span>
+      <span class="step step38 green"></span>
+      <span class="step step39 yellow"></span>
+    </div>
+    <div class="d10">
+      <span class="step step40 yellow"></span>
+      <span class="step step41 red"></span>
+      <span class="step step42 blue"></span>
+      <span class="step step43 green"></span>
+    </div>
+    <div class="d11">
+      <span class="step step44 yellow"></span>
+      <span class="step step45 red"></span>
+      <span class="step step46 blue"></span>
+      <span class="step step47 green"></span>
+    </div>
+    <div class="d12">
+      <span class="step step48 green"></span>
+      <span class="step step49 yellow"></span>
+      <span class="step step50 red"></span>
+      <span class="step step51 blue"></span>
+      <span class="step step52 green"></span>
+    </div>
+
+    <!-- 胜利之路 -->
+    <div class="v-yellow">
+      <span class="step yellow"></span>
+      <span class="step yellow"></span>
+      <span class="step yellow"></span>
+      <span class="step yellow"></span>
+      <span class="step yellow"></span>
+    </div>
+    <div class="v-green">
+      <span class="step green"></span>
+      <span class="step green"></span>
+      <span class="step green"></span>
+      <span class="step green"></span>
+      <span class="step green"></span>
+    </div>
+    <div class="v-blue">
+      <span class="step blue"></span>
+      <span class="step blue"></span>
+      <span class="step blue"></span>
+      <span class="step blue"></span>
+      <span class="step blue"></span>
+    </div>
+    <div class="v-red">
+      <span class="step red"></span>
+      <span class="step red"></span>
+      <span class="step red"></span>
+      <span class="step red"></span>
+      <span class="step red"></span>
+    </div>
+    
+    <!-- 中心转盘 -->
+    <div class="center-board">
+      <span>end</span>
+      <span>end</span>
+      <span>end</span>
+      <span>end</span>
+    </div>
+
+    <!-- 大本营基地 -->
+    <div class="base yellow">
+      <span class="launchpad"></span>
+      <div class="wrapper">
+        <span class="stock road">
+        </span>
+        <span class="stock"></span>
+      </div>
+      <div class="wrapper">
+        <span class="stock"></span>
+        <span class="stock"></span>
+      </div>
+    </div>
+    <div class="base red">
+      <span class="launchpad"></span>
+      <div class="wrapper">
+        <span class="stock road">
+          
+        </span>
+        <span class="stock"></span>
+      </div>
+      <div class="wrapper">
+        <span class="stock"></span>
+        <span class="stock"></span>
+      </div>
+    </div>
+    <div class="base blue">
+      <span class="launchpad"></span>
+      <div class="wrapper">
+        <span class="stock road">
+          
+        </span>
+        <span class="stock"></span>
+      </div>
+      <div class="wrapper">
+        <span class="stock"></span>
+        <span class="stock"></span>
+      </div>
+    </div>
+    <div class="base green">
+      <span class="launchpad"></span>
+      <div class="wrapper">
+        <span class="stock road">
+          
+        </span>
+        <span class="stock"></span>
+      </div>
+      <div class="wrapper">
+        <span class="stock"></span>
+        <span class="stock"></span>
+      </div>
+    </div>
+
+    <!-- 飞机 -->
+    <!-- 黄色飞机 -->
+    <img src="img/yellow.png" id="y1" class="">
+    <img src="img/yellow.png" id="y2" class="">
+    <img src="img/yellow.png" id="y3" class="">
+    <img src="img/yellow.png" id="y4" class="">
+
+    <!-- 红色飞机 -->
+    <img src="img/red.png" id="r1" class="">
+    <img src="img/red.png" id="r2" class="">
+    <img src="img/red.png" id="r3" class="">
+    <img src="img/red.png" id="r4" class="">
+
+    <!-- 蓝色飞机 -->
+    <img src="img/3d-blue2.png" id="b1" class="">
+    <img src="img/3d-blue2.png" id="b2" class="">
+    <img src="img/3d-blue2.png" id="b3" class="">
+    <img src="img/3d-blue2.png" id="b4" class="">
+
+    <!-- 绿色飞机 -->
+    <img src="img/green.png" id="g1" class="">
+    <img src="img/green.png" id="g2" class="">
+    <img src="img/green.png" id="g3" class="">
+    <img src="img/green.png" id="g4" class="">
+  </div>
+
+  <script src="js/jquery.min.js"></script>
+  <script src="js/main.js"></script>
+
+  <script>
+    function randomMagic(){
+      $('.step').text('');
+      var wind = Math.floor(Math.random() * 52) + 1;
+      var rain = Math.floor(Math.random() * 52) + 1;
+      var stop = Math.floor(Math.random() * 52) + 1;
+      var again = Math.floor(Math.random() * 52) + 1;
+      $('.step' + wind).text('风');
+      $('.step' + rain).text('雨');
+      $('.step' + stop).text('停');
+      $('.step' + again).text('再');
+    }
+
+
+    // function deleteMagic(sign){
+    //   $(".step:contains(" + sign + ")").text('');
+    // }
+
+
+    function doWind(){
+      $('.step').css('outline', 'none');
+      var randomPosition = Math.floor(Math.random() * 52) + 1;
+      $('.step' + randomPosition).css('outline', '10px solid rgba(0,0,0,.7');
+      // setTimeout(function(){
+      //   $('.step' + randomPosition).css('outline', 'none');
+      // }, 3000);
+      var a = 100;
+      setInterval(function(){
+        if(a > 10){
+          a--;
+          $('.step' + randomPosition).css('outline', a + 'px solid rgba(0,0,0,.7');
+        }
+      }, 10);
+    }
+
+    window.onload = randomMagic;
+  </script>
+</body>
+</html>

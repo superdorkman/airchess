@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .center-board{
+      width: 0;
+      height: 0;
+      border: 60px solid transparent;
+      border-top-color: #F8C804;
+      border-right-color: #88DE3F;
+      border-bottom-color: #67D3F5;
+      border-left-color: #F6886A;
+      border-radius: 4px;
+      position: relative;
+    }
+    .center-board:after{
+      content: '飞吧';
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: absolute;
+      width: 44px;
+      height: 44px;
+      border-radius: 50px;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      /*outline: 1px solid;*/
+      background-color: #0881C9;
+      color: #fff;
+      font-size: .8em;
+    }
+    .center-board span{
+      color: #fff;
+      position: absolute;
+      text-transform: uppercase;
+      z-index: 1;
+    }
+    .center-board span:nth-child(1){
+      top: -40px;
+      left: -16px;
+      transform: rotate(180deg);
+    }
+    .center-board span:nth-child(2){
+      top: -11px;
+      right: -47px;
+      transform: rotate(-90deg);
+    }
+    .center-board span:nth-child(3){
+      bottom: -40px;
+      left: -16px;
+      /*transform: rotate(180deg);*/
+    }
+    .center-board span:nth-child(4){
+      top: -11px;
+      left: -47px;
+      transform: rotate(90deg);
+    }
+  </style>
+</head>
+<body>
+  <div class="center-board">
+    <span>end</span>
+    <span>end</span>
+    <span>end</span>
+    <span>end</span>
+  </div>
+</body>
+</html>

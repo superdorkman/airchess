@@ -1,0 +1,511 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/************************跑道组件**************************/
+.step{
+  margin: 0 2px 2px 0;
+  width: 40px;
+  height: 40px;
+  position: relative;
+  
+  box-shadow: 1px 1px 2px rgba(0,0,0,.7);
+}
+.step:before{
+  content: '';
+  position: absolute;
+  width: 70%;
+  height: 70%;
+  border: 2px dashed rgba(250,250,250,.6);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.step.yellow{
+  background-color: #EEC11F;
+}
+.step.green{
+  background-color: #4A9836;
+}
+.step.blue{
+  background-color: #0E6785;
+}
+.step.red{
+  background-color: #BA2B38;
+}
+
+
+/*************************end of 跑道*************************/
+
+/************************基地组件**************************/
+.base{
+  width: 200px;
+  height: 200px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background-color: #F8C804;
+  border-radius: .5em;
+  padding: 4px;
+  z-index: 1;
+  transform: scale(.6);
+}
+.base .wrapper{
+  display: flex;
+  justify-content: space-around;
+}
+.base .stock{
+  width: 88px;
+  height: 88px;
+  border-radius: 4px;
+  background-color: #EFD375;
+  border-radius: .5em;
+  z-index: 1;
+}
+.base .stock.road:before{
+  content: '';
+  position: absolute;
+  width: 48px;
+  height: 30px;
+  border-top: 3px dashed rgba(250,250,250,.7);
+  border-bottom: 3px dashed rgba(250,250,250,.7);
+  transform: rotate(37deg);
+  top: -15px;
+  left: -27px;
+}
+.base:after{
+  content: '+';
+  position: absolute;
+  width: 46%;
+  height: 46%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 2px solid rgba(250,250,250,.7);
+  color: rgba(250,250,250,.7);
+  border-radius: 50%;
+  font-size: 3em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+.base .launchpad{
+  position: absolute;
+  width: 40%;
+  height: 40%;
+  background-color: #F8C804;
+  border-radius: 50%;
+  top: -74px;
+  left: -84px;
+  z-index: 1;
+}
+.base .launchpad:before{
+  content: '';
+  position: absolute;
+  width: 80%;
+  height: 80%;
+  border: 3px dashed rgba(250,250,250,.6);
+  border-radius: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+.base .launchpad:after{
+  content: '';
+  position: absolute;
+  top: 47px;
+  left: 25px;
+  width: 100px;
+  height: 50px;
+  background-color: #F8C804;
+  transform: rotate(37deg);
+}
+
+
+.base.yellow{
+  top: -39px;
+  right: -37px;
+}
+/*红色基地*/
+.base.red{
+  top: -39px;
+  left: -37px;
+  transform: rotate(-90deg) scale(0.6);
+}
+.base.red, .base.red .launchpad, .base.red .launchpad:after{
+  background-color: #BA2B38;
+}
+.base.red .stock{
+  background-color: #D98D72;
+}
+
+/*蓝色基地*/
+.base.blue{
+  bottom: -39px;
+  left: -37px;
+  transform: rotate(180deg) scale(0.6);
+}
+.base.blue, .base.blue .launchpad, .base.blue .launchpad:after{
+  background-color: #0E6785;
+}
+.base.blue .stock{
+  background-color: #66BBF0;
+}
+
+/*绿色基地*/
+.base.green{
+  bottom: -39px;
+  right: -37px;
+  transform: rotate(90deg) scale(0.6);
+}
+.base.green, .base.green .launchpad, .base.green .launchpad:after{
+  background-color: #4A9836;
+}
+.base.green .stock{
+  background-color: #80CF66;
+}
+
+/*************************end of 基地*************************/
+
+/***********************转弯口***********************/
+.d1:after, .d5:before, .d7:before, .d11:before{
+  content: '';
+  position: absolute;
+  top: 0;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  background-color: #B8B8B8;
+  box-shadow: 1px 1px 1px rgba(0,0,0,.5);
+}
+.d1:after{
+  right: -40px;
+  border-bottom-right-radius: 40px;
+}
+.d5:before{
+  left: -42px;
+  border-bottom-left-radius: 40px;
+}
+.d7:before{
+  left: -42px;
+  border-top-left-radius: 40px;
+}
+.d11:before{
+  right: -40px;
+  border-top-right-radius: 40px;
+}
+
+/*************************end of 转弯口*************************/
+
+
+/*************************胜利通道*************************/
+.v-yellow{
+  position: absolute;
+  width: 40px;
+  height: 210px;
+  top: 42px;
+  left: 294px;
+}
+.v-green{
+  position: absolute;
+  width: 210px;
+  height: 40px;
+  top: 294px;
+  left: 378px;
+}
+.v-blue{
+  position: absolute;
+  width: 40px;
+  height: 210px;
+  top: 378px;
+  left: 294px;
+}
+.v-red{
+  position: absolute;
+  width: 210px;
+  height: 40px;
+  top: 294px;
+  left: 42px;
+}
+
+/*************************end of 胜利通道*************************/
+
+
+/*************************中心转盘*************************/
+.center-board{
+  width: 0;
+  height: 0;
+  border: 62px solid transparent;
+  border-top-color: #EEC11F;
+  border-right-color: #4A9836;
+  border-bottom-color: #0E6785;
+  border-left-color: #BA2B38;
+  border-radius: 4px;
+  position: absolute;
+  top: 252.5px;
+  left: 252.5px;
+}
+.center-board:after{
+  content: '\2708';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 66px;
+  height: 66px;
+  border-radius: 50px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #0881C9;
+  color: #fff;
+  font-size: 2.8em;
+}
+.center-board span{
+  color: #fff;
+  position: absolute;
+  text-transform: uppercase;
+  z-index: 1;
+  font-size: 1.1em;
+}
+.center-board span:nth-child(1){
+  top: -58px;
+  left: -16px;
+  transform: rotate(180deg);
+}
+.center-board span:nth-child(2){
+  top: -11px;
+  right: -66px;
+  transform: rotate(-90deg);
+}
+.center-board span:nth-child(3){
+  bottom: -58px;
+  left: -16px;
+  /*transform: rotate(180deg);*/
+}
+.center-board span:nth-child(4){
+  top: -11px;
+  left: -66px;
+  transform: rotate(90deg);
+}
+/*************************end of 中心转盘*************************/
+
+/*************************飞机*************************/
+/*黄色飞机*/
+img{
+  position: absolute;
+  z-index: 999;
+  cursor: pointer;
+  transition: all .5s;
+}
+
+#y1{
+  width: 54px;
+  top: 9px;
+  right: 65px;
+  transform: rotate(-90deg);
+}
+#y2{
+  width: 54px;
+  top: 9px;
+  right: 6px;
+  transform: rotate(-90deg);
+}
+#y3{
+  width: 54px;
+  top: 65px;
+  right: 65px;
+  transform: rotate(-90deg);
+}
+#y4{
+  width: 54px;
+  top: 66px;
+  right: 6px;
+  transform: rotate(-90deg);
+}
+
+/*红色飞机*/
+#r1{
+  width: 54px;
+  top: 66px;
+  left: 7px;
+  transform: rotate(180deg);
+}
+#r2{
+  width: 54px;
+  top: 66px;
+  left: 64px;
+  transform: rotate(180deg);
+}
+#r3{
+  width: 54px;
+  top: 7px;
+  left: 6px;
+  transform: rotate(180deg);
+}
+#r4{
+  width: 54px;
+  top: 7px;
+  left: 64px;
+  transform: rotate(180deg);
+}
+
+/*蓝色飞机*/
+#b1{
+  width: 54px;
+  bottom: 7px;
+  left: 64px;
+  transform: rotate(90deg);
+}
+#b2{
+  width: 54px;
+  bottom: 66px;
+  left: 64px;
+  transform: rotate(90deg);
+}
+#b3{
+  width: 54px;
+  bottom: 7px;
+  left: 6px;
+  transform: rotate(90deg);
+}
+#b4{
+  width: 54px;
+  bottom: 66px;
+  left: 7px;
+  transform: rotate(90deg);
+}
+
+/*绿色飞机*/
+#g1{
+  width: 54px;
+  bottom: 66px;
+  right: 7px;
+}
+#g2{
+  width: 54px;
+  bottom: 66px;
+  right: 64px;
+}
+#g3{
+  width: 54px;
+  bottom: 7px;
+  right: 6px;
+}
+#g4{
+  width: 54px;
+  bottom: 7px;
+  right: 64px;
+}
+/*************************end of 飞机*************************/
+
+#app{
+  /*outline: 1px solid;*/
+  width: 630px;
+  height: 630px;
+  margin: 80px auto;
+  position: relative;
+}
+
+#app > div{
+  position: absolute;
+}
+#app > div .step, .semi-circle{
+  float: left;
+}
+
+.d1{
+  width: 168px;
+  height: 40px;
+  top: 168px;
+  left: 0;
+}
+
+.d2{
+  width: 40px;
+  height: 168px;
+  top: 0;
+  left: 168px;
+}
+
+.d3{
+  width: 210px;
+  height: 40px;
+  top: 0;
+  left: 210px;
+}
+.d4{
+  width: 40px;
+  height: 168px;
+  top: 0;
+  left: 420px;
+}
+.d5{
+  width: 168px;
+  height: 40px;
+  top: 168px;
+  left: 462px;
+}
+.d6{
+  width: 40px;
+  height: 210px;
+  top: 210px;
+  left: 588px;
+}
+.d7{
+  width: 168px;
+  height: 40px;
+  top: 420px;
+  left: 462px;
+}
+.d8{
+  width: 40px;
+  height: 168px;
+  top: 462px;
+  left: 420px;
+}
+
+.d9{
+  width: 210px;
+  height: 40px;
+  top: 588px;
+  left: 210px;
+}
+.d10{
+  width: 40px;
+  height: 168px;
+  top: 462px;
+  left: 168px;
+}
+
+.d11{
+  width: 168px;
+  height: 40px;
+  top: 420px;
+  left: 0;
+}
+
+.d12{
+  width: 40px;
+  height: 210px;
+  top: 210px;
+  left: 0;
+}
+
+
+
+/****************************动画************************/
+@keyframes roll-dice{
+  to{
+    transform: rotate(3600deg) translate(-50%, -50%);
+  }
+}
+/****************************end of 动画************************/
